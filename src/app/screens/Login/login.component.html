@@ -1,28 +1,18 @@
 <div class="general-container">
   <form class="container" [formGroup]="form" (ngSubmit)="onSubmit()">
-    <img class="logo" src="../../../assets/logo.png" alt="Angular training logo" />
-    <ng-container *ngIf="isLoginVisible; else signUp">
-      <input placeholder="email" type="text" formControlName="email">
-      <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
-        <div *ngIf="email.errors.required">
-          Name is required.
-        </div>
-        <div *ngIf="email.errors.pattern">
-          Name must be at least 4 characters long.
-        </div>
-      </div>
-      <input placeholder="password" type="password" formControlName="password">
-      <app-input [label]="'Email'" [id]="'email'"></app-input>
-      <app-input [label]="'Password'" [id]="'password'"></app-input>
+    <img class="logo" src="/assets/logo.png" alt="Angular training logo" />
+    <ng-container *ngIf="isLoginVisible; else formSignUp">
+      <app-input label="Email" formControlName="email" id="email"></app-input>
+      <app-input label="Password" formControlName="password" id="password" type="password"></app-input>
     </ng-container>
-    <ng-template #signUp>
-      <app-input [label]="'Name'" [id]="'name'"></app-input>
-      <app-input [label]="'Last name'" [id]="'lastName'"></app-input>
-      <app-input [label]="'Email'" [id]="'email'"></app-input>
-      <app-input [label]="'Password'" [id]="'password'"></app-input>
-      <app-input [label]="'Password confirmation'" [id]="'passwordRepeat'"></app-input>
+    <ng-template #formSignUp>
+      <app-input label="Name" id="firstName" formControlName="firstName"></app-input>
+      <app-input label="Last name" id="lastName" formControlName="lastName"></app-input>
+      <app-input label="Email" id="email" formControlName="email"></app-input>
+      <app-input label="Password" id="password" formControlName="password" type="password"></app-input>
+      <app-input label="Password confirmation" id="passwordConfirmation" formControlName="passwordConfirmation" type="password"></app-input>
     </ng-template>
-    <button class="general-btn primary" type="button" [disabled]="!form.valid">
+    <button class="general-btn primary" type="submit" [disabled]="!form.valid">
       {{ isLoginVisible ? 'Login' : 'Sign Up' }}
     </button>
     <span class="separator"></span>

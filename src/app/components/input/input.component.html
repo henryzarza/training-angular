@@ -1,5 +1,20 @@
 <div class="container">
-  <input class="input" type="text" [id]="id" autocomplete="off" />
-  <label class="label" [for]="id">{{label}}</label>
-  <span class="border"></span>
+  <div class="input-container">
+    <input
+      [id]="id"
+      class="input"
+      [name]="id"
+      [type]="type"
+      [(ngModel)]="value"
+      autocomplete="off"
+      [ngClass]="{error: control.invalid && (control.dirty || control.touched), valid: value }"
+      (ngModelChange)="onChange()"
+      (blur)="markAsTouched()"
+    />
+    <label class="label" [for]="id">{{label}}</label>
+    <span class="border"></span>
+  </div>
+  <span *ngIf="control.invalid && (control.dirty || control.touched)" class="error-message">
+    {{errorMessages.getMessage(control.errors)}}
+  </span>
 </div>
