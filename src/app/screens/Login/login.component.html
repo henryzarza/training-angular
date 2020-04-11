@@ -1,12 +1,35 @@
 <div class="general-container">
-  <div class="container">
-    <img class="logo" src="../../../assets/logo.png" alt="Angular tarining logo" />
-    <app-input [label]="'Email'" [id]="'email'"></app-input>
-    <app-input [label]="'Password'" [id]="'password'"></app-input>
-    <button class="general-btn primary" type="button">Login</button>
+  <form class="container" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <img class="logo" src="../../../assets/logo.png" alt="Angular training logo" />
+    <ng-container *ngIf="isLoginVisible; else signUp">
+      <input placeholder="email" type="text" formControlName="email">
+      <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+        <div *ngIf="email.errors.required">
+          Name is required.
+        </div>
+        <div *ngIf="email.errors.pattern">
+          Name must be at least 4 characters long.
+        </div>
+      </div>
+      <input placeholder="password" type="password" formControlName="password">
+      <app-input [label]="'Email'" [id]="'email'"></app-input>
+      <app-input [label]="'Password'" [id]="'password'"></app-input>
+    </ng-container>
+    <ng-template #signUp>
+      <app-input [label]="'Name'" [id]="'name'"></app-input>
+      <app-input [label]="'Last name'" [id]="'lastName'"></app-input>
+      <app-input [label]="'Email'" [id]="'email'"></app-input>
+      <app-input [label]="'Password'" [id]="'password'"></app-input>
+      <app-input [label]="'Password confirmation'" [id]="'passwordRepeat'"></app-input>
+    </ng-template>
+    <button class="general-btn primary" type="button" [disabled]="!form.valid">
+      {{ isLoginVisible ? 'Login' : 'Sign Up' }}
+    </button>
     <span class="separator"></span>
-    <button class="general-btn secondary" type="button">Sign Up</button>
-  </div>
+    <button class="general-btn secondary" type="button" (click)="toggleContent()">
+      {{ isLoginVisible ? 'Sign Up' : 'Login' }}
+    </button>
+  </form>
 </div>
 
 
