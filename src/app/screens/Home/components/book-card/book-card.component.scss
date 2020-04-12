@@ -35,13 +35,12 @@
   &:active,
   &:focus {
     background-color: $azure;
-    box-shadow: 4px 4px 10px 0 rgba($black, 0.5);
     color: $white;
   }
 
   &:active,
   &:focus {
-    box-shadow: none;
+    transform: scale(0.9);
   }
 }
 
