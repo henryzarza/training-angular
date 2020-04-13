@@ -1,0 +1,47 @@
+@import 'src/scss/colors';
+@import 'src/scss/variables';
+
+.general-container {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+}
+
+.container {
+  align-items: center;
+  animation: fadeInUp 500ms $transition-function 100ms;
+  background-color: $white;
+  border-radius: 0.25rem;
+  border-top: 0.5rem solid $azure;
+  box-shadow: 3px 4px 6px rgba($black, 0.2);
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  padding: 1.5rem;
+  width: 20rem;
+}
+
+.logo {
+  height: 4.4rem;
+  margin-bottom: 3rem;
+}
+
+.separator {
+  background-color: darken($wild-sand, 10%);
+  height: 0.1rem;
+  margin: 1rem 0;
+  width: 100%;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 25%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}

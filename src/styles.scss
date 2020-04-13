@@ -1,1 +1,42 @@
-/* You can add global styles to this file, and also import other style files */
+@import './scss/equalizer';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import './scss/colors';
+@import './scss/variables';
+
+*,
+html,
+body {
+  color: $dove-gray;
+  font-family: 'Roboto', sans-serif;
+}
+
+.general-btn {
+  border-radius: 0.25rem;
+  font-weight: 700;
+  padding: 1rem;
+  transition: all $transition-duration $transition-function;
+  width: 100%;
+
+  &.primary {
+    background-color: $azure;
+    color: $white;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: darken($azure, 10%);
+    }
+  }
+
+  &.secondary {
+    border: 0.09rem solid $azure;
+    color: $azure;
+
+    &:hover,
+    &:focus,
+    &:active {
+      border-color: $dove-gray;
+      color: $dove-gray;
+    }
+  }
+}

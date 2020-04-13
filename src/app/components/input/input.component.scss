@@ -1,0 +1,54 @@
+@import 'src/scss/colors';
+@import 'src/scss/variables';
+
+:host {
+  width: 100%;
+}
+
+.container {
+  margin-bottom: 2.8rem;
+  position: relative;
+}
+
+.input {
+  background-color: $wild-sand;
+  border: rgba($black, 0.6);
+  font-size: 1rem;
+  padding: 1rem;
+  transition: background-color $transition-duration $transition-function;
+  width: 100%;
+
+  &:focus {
+    background-color: $white;
+
+    ~ .label {
+      transform: translate(-1rem, -2.3rem);
+    }
+
+    ~ .border {
+      transform: scale(1, 1);
+    }
+  }
+}
+
+.label {
+  font-size: 0.85rem;
+  left: 1rem;
+  position: absolute;
+  top: 1.2rem;
+  transform: translate(0, 0);
+  transition: transform $transition-duration $transition-function;
+}
+
+.border {
+  border: 0.1rem solid $azure;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: scale(0, 0);
+  transform-origin: 0 0;
+  transition: transform $transition-duration $transition-function;
+}
