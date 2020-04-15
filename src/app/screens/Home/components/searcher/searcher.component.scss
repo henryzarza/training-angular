@@ -1,0 +1,31 @@
+@import 'src/scss/variables';
+@import 'src/scss/colors';
+
+.container {
+  margin: #{$navbar-height + 2rem} auto 2.5rem;
+  max-width: 100%;
+  position: relative;
+  width: 646px;
+}
+
+.input {
+  background-color: $white;
+  border: 2px solid $mercury;
+  border-radius: 0.25rem;
+  font-size: 1.3rem;
+  padding: 0.6rem 2.5rem 0.6rem 1rem;
+  transition: border-color $transition-duration $transition-function;
+  width: 100%;
+
+  &:focus {
+    border-color: $azure;
+  }
+}
+
+.icon {
+  color: $mercury;
+  font-size: 1.3rem;
+  position: absolute;
+  right: 1rem;
+  top: 0.9rem;
+}
