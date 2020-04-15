@@ -7,7 +7,7 @@
   justify-content: center;
   margin: 0 auto;
   max-width: 100%;
-  padding: 1rem;
+  padding: #{$navbar-height + 2rem} 1rem 0;
   width: $max-container-width;
 }
 
