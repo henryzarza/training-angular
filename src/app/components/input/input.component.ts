@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Self, Optional } from '@angular/core';
+import { Component, Input, Self, Optional } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { Errors } from 'src/constants/error-messages';
 
@@ -7,7 +7,7 @@ import { Errors } from 'src/constants/error-messages';
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss']
 })
-export class InputComponent implements ControlValueAccessor, OnInit {
+export class InputComponent implements ControlValueAccessor {
   @Input() label: string;
   @Input() id: string;
   @Input() type = 'text';
@@ -19,12 +19,6 @@ export class InputComponent implements ControlValueAccessor, OnInit {
     if (control) {
       control.valueAccessor = this;
       this.control = control;
-    }
-  }
-
-  ngOnInit() {
-    if (this.value) {
-      this.onChange();
     }
   }
 
