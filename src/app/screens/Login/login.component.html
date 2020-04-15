@@ -1,23 +1,29 @@
 <div class="general-container">
-  <form class="container" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <form class="container" [formGroup]="loginForm" (ngSubmit)="onSubmit()" [ngClass]="{'hide-form': !isLoginVisible}">
     <img class="logo" src="/assets/logo.png" alt="Angular training logo" />
-    <ng-container *ngIf="isLoginVisible; else formSignUp">
-      <app-input label="Email" formControlName="email" id="email"></app-input>
-      <app-input label="Password" formControlName="password" id="password" type="password"></app-input>
-    </ng-container>
-    <ng-template #formSignUp>
-      <app-input label="Name" id="firstName" formControlName="firstName"></app-input>
-      <app-input label="Last name" id="lastName" formControlName="lastName"></app-input>
-      <app-input label="Email" id="email" formControlName="email"></app-input>
-      <app-input label="Password" id="password" formControlName="password" type="password"></app-input>
-      <app-input label="Password confirmation" id="passwordConfirmation" formControlName="passwordConfirmation" type="password"></app-input>
-    </ng-template>
-    <button class="general-btn primary" type="submit" [disabled]="!form.valid">
-      {{ isLoginVisible ? 'Login' : 'Sign Up' }}
+    <app-input label="Email" formControlName="email" id="email"></app-input>
+    <app-input label="Password" formControlName="password" id="password" type="password"></app-input>
+    <button class="general-btn primary" type="submit" [disabled]="!loginForm.valid">
+      Login
     </button>
     <span class="separator"></span>
     <button class="general-btn secondary" type="button" (click)="toggleContent()">
-      {{ isLoginVisible ? 'Sign Up' : 'Login' }}
+      Sign Up
+    </button>
+  </form>
+  <form class="container" [ngClass]="{'hide-form': isLoginVisible}" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <img class="logo" src="/assets/logo.png" alt="Angular training logo" />
+    <app-input label="Name" id="firstName" formControlName="firstName"></app-input>
+    <app-input label="Last name" id="lastName" formControlName="lastName"></app-input>
+    <app-input label="Email" id="signupEmail" formControlName="signupEmail"></app-input>
+    <app-input label="Password" id="signupPassword" formControlName="signupPassword" type="password"></app-input>
+    <app-input label="Password confirmation" id="passwordConfirmation" formControlName="passwordConfirmation" type="password"></app-input>
+    <button class="general-btn primary" type="submit" [disabled]="!signupForm.valid">
+      Sign Up
+    </button>
+    <span class="separator"></span>
+    <button class="general-btn secondary" type="button" (click)="toggleContent()">
+      Login
     </button>
   </form>
 </div>
