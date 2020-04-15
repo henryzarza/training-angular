@@ -26,6 +26,11 @@ body {
     &:active {
       background-color: darken($azure, 10%);
     }
+
+    &:disabled {
+      background-color: lighten($dove-gray, 15%);
+      cursor: not-allowed;
+    }
   }
 
   &.secondary {

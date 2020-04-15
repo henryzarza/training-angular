@@ -6,7 +6,13 @@
 }
 
 .container {
-  margin-bottom: 2.8rem;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.input-container {
+  margin-bottom: 0.5rem;
   position: relative;
 }
 
@@ -29,11 +35,21 @@
       transform: scale(1, 1);
     }
   }
+
+  &.valid ~ .label {
+    transform: translate(-1rem, -2.3rem);
+  }
+
+  &.error ~ .border {
+    border-color: $mandy;
+    transform: scale(1, 1);
+  }
 }
 
 .label {
   font-size: 0.85rem;
   left: 1rem;
+  pointer-events: none;
   position: absolute;
   top: 1.2rem;
   transform: translate(0, 0);
@@ -51,4 +67,9 @@
   transform: scale(0, 0);
   transform-origin: 0 0;
   transition: transform $transition-duration $transition-function;
+}
+
+.error-message {
+  color: $mandy;
+  font-size: 0.85rem;
 }

@@ -1,12 +1,31 @@
 <div class="general-container">
-  <div class="container">
-    <img class="logo" src="../../../assets/logo.png" alt="Angular tarining logo" />
-    <app-input [label]="'Email'" [id]="'email'"></app-input>
-    <app-input [label]="'Password'" [id]="'password'"></app-input>
-    <button class="general-btn primary" type="button">Login</button>
+  <form class="container" [formGroup]="loginForm" (ngSubmit)="onSubmit()" [ngClass]="{'hide-form': !isLoginVisible}">
+    <img class="logo" src="/assets/logo.png" alt="Angular training logo" />
+    <app-input label="Email" formControlName="email" id="email"></app-input>
+    <app-input label="Password" formControlName="password" id="password" type="password"></app-input>
+    <button class="general-btn primary" type="submit" [disabled]="!loginForm.valid">
+      Login
+    </button>
     <span class="separator"></span>
-    <button class="general-btn secondary" type="button">Sign Up</button>
-  </div>
+    <button class="general-btn secondary" type="button" (click)="toggleContent()">
+      Sign Up
+    </button>
+  </form>
+  <form class="container" [ngClass]="{'hide-form': isLoginVisible}" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <img class="logo" src="/assets/logo.png" alt="Angular training logo" />
+    <app-input label="Name" id="firstName" formControlName="firstName"></app-input>
+    <app-input label="Last name" id="lastName" formControlName="lastName"></app-input>
+    <app-input label="Email" id="signupEmail" formControlName="signupEmail"></app-input>
+    <app-input label="Password" id="signupPassword" formControlName="signupPassword" type="password"></app-input>
+    <app-input label="Password confirmation" id="passwordConfirmation" formControlName="passwordConfirmation" type="password"></app-input>
+    <button class="general-btn primary" type="submit" [disabled]="!signupForm.valid">
+      Sign Up
+    </button>
+    <span class="separator"></span>
+    <button class="general-btn secondary" type="button" (click)="toggleContent()">
+      Login
+    </button>
+  </form>
 </div>
 
 
