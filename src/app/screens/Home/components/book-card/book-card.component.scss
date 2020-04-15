@@ -1,0 +1,69 @@
+@import 'src/scss/colors';
+@import 'src/scss/variables';
+
+.card {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 0.3rem;
+  box-shadow: 4px 4px 10px 0 rgba($black, 0.5);
+  height: 19.5rem;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+  width: 12.5rem;
+
+  &:hover {
+    .card-content {
+      transform: translateY(0);
+    }
+  }
+}
+
+.button {
+  background-color: $white;
+  border-radius: 0.3rem;
+  font-weight: 700;
+  padding: 0.4rem 0.8rem;
+  position: absolute;
+  right: 1rem;
+  text-transform: uppercase;
+  top: 1rem;
+  transition: all $transition-duration $transition-function;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: $azure;
+    color: $white;
+  }
+
+  &:active,
+  &:focus {
+    transform: scale(0.9);
+  }
+}
+
+.card-content {
+  background-color: rgba($black, 0.5);
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0.8rem;
+  position: absolute;
+  transform: translateY(10rem);
+  transition: transform $transition-duration $transition-function;
+  width: 100%;
+}
+
+.card-title {
+  color: $white;
+  font-size: 1.5rem;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+.card-title-info {
+  color: $white;
+  font-size: 1rem;
+}
