@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './screens/login/login.component';
+import { PageNotFoundComponent } from './screens/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -9,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    component: LoginComponent // TODO replace this by PageNotFoundComponent
+    component: PageNotFoundComponent
   }
 ];
 

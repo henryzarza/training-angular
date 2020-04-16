@@ -1,0 +1,62 @@
+@import 'src/scss/colors';
+@import 'src/scss/variables';
+
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.title {
+  color: $mercury;
+  font-size: 15rem;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  position: relative;
+  text-shadow: 0.2rem 0.2rem 0.1rem rgba($black, 0.35);
+
+  &::before {
+    animation: move 1.2s $transition-function infinite alternate;
+    background-clip: text;
+    background-image: radial-gradient(circle closest-side, $azure, transparent);
+    background-repeat: no-repeat;
+    color: transparent;
+    content: '404';
+    position: absolute;
+    text-shadow: none;
+    top: 0;
+  }
+}
+
+@keyframes move {
+  from {
+    background-position: -20rem -2rem;
+  }
+  to {
+    background-position: 20rem 1rem;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  width: 20rem;
+}
+
+.subtitle {
+  color: $dove-gray;
+  font-size: 1.8rem;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.button {
+  align-self: center;
+  text-transform: uppercase;
+  width: auto;
+}
