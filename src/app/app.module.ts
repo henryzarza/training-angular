@@ -6,11 +6,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GeneralComponentsModule } from './components/general-components.module';
 import { LoginComponent } from './screens/login/login.component';
-import { HomeModule } from './screens/Home/home.module';
+import { HomeModule } from './screens/home/home.module';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent],
-  imports: [BrowserModule, AppRoutingModule, GeneralComponentsModule, ReactiveFormsModule, HomeModule],
+  imports: [BrowserModule, GeneralComponentsModule, ReactiveFormsModule, HomeModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })

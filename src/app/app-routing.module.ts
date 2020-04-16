@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './screens/Login/login.component';
-import { HomeComponent } from './screens/home/home.component';
-import { BookDetailComponent } from './screens/home/screens/book-detail/book-detail.component';
+import { LoginComponent } from './screens/login/login.component';
 
 const routes: Routes = [
   {
@@ -10,12 +8,8 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: '',
-    component: HomeComponent
-  },
-  {
-    path: 'detail',
-    component: BookDetailComponent
+    path: '**',
+    component: LoginComponent // TODO replace this by PageNotFoundComponent
   }
 ];
 
