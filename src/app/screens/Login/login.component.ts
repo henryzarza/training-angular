@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
-import { EMAIL_PATTERN_VALIDATION } from './constants';
+import { EMAIL_PATTERN_VALIDATION, PASSWORD_PATTERN_VALIDATION } from 'src/constants/form-validations';
 
 @Component({
   selector: 'app-login',
@@ -23,10 +23,10 @@ export class LoginComponent implements OnInit {
       locale: new FormControl('en', Validators.required),
       signupEmail: new FormControl('', [Validators.required, Validators.pattern(EMAIL_PATTERN_VALIDATION)]),
       signupPassword: new FormControl('', [
-        Validators.required, Validators.minLength(8), this.passwordValidator(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]/)
+        Validators.required, Validators.minLength(8), this.passwordValidator(PASSWORD_PATTERN_VALIDATION)
       ]),
-      passwordConfirmation: new FormControl('')
-    }, { validators: this.passwordMatchValidator });
+      passwordConfirmation: new FormControl('', Validators.required)
+    }, { validators: this.passwordMatchValidator }); // TODO check this because it doesn't work
   }
 
   onSubmit() {

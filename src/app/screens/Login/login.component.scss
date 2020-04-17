@@ -1,5 +1,4 @@
 @import 'src/scss/colors';
-@import 'src/scss/variables';
 
 .general-container {
   align-items: center;
@@ -10,7 +9,6 @@
 
 .container {
   align-items: center;
-  animation: fadeInUp 500ms $transition-function 100ms;
   background-color: $white;
   border-radius: 0.25rem;
   border-top: 0.5rem solid $azure;
@@ -36,16 +34,4 @@
 
 .hide-form {
   display: none;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 25%, 0);
-  }
-
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
 }
