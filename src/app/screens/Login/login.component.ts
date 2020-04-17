@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { EMAIL_PATTERN_VALIDATION, PASSWORD_PATTERN_VALIDATION } from 'src/constants/form-validations';
+import { Errors } from 'src/constants/error-messages';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +13,9 @@ export class LoginComponent implements OnInit {
   isLoginVisible = true;
   loginForm: FormGroup;
   signupForm: FormGroup;
+  errorMessages = Errors;
+
+  constructor(private router: Router) {}
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -20,21 +25,24 @@ export class LoginComponent implements OnInit {
     this.signupForm = new FormGroup({
       firstName: new FormControl('', [Validators.required, Validators.minLength(2)]),
       lastName: new FormControl('', [Validators.required, Validators.minLength(2)]),
-      locale: new FormControl('en', Validators.required),
+      locale: new FormControl('en'),
       signupEmail: new FormControl('', [Validators.required, Validators.pattern(EMAIL_PATTERN_VALIDATION)]),
       signupPassword: new FormControl('', [
         Validators.required, Validators.minLength(8), this.passwordValidator(PASSWORD_PATTERN_VALIDATION)
       ]),
       passwordConfirmation: new FormControl('', Validators.required)
-    }, { validators: this.passwordMatchValidator }); // TODO check this because it doesn't work
+    }, this.passwordMatchValidator);
   }
 
   onSubmit() {
     if (this.isLoginVisible) {
       console.table(this.loginForm.value);
     } else {
+      this.signupForm.get('locale').setValue('en');
       console.table(this.signupForm.value);
     }
+    localStorage.setItem('isAuthenticated', 'true');
+    this.router.navigate(['/']);
   }
 
   toggleContent() {
@@ -43,10 +51,10 @@ export class LoginComponent implements OnInit {
     this.signupForm.reset();
   }
 
-  passwordMatchValidator(control: AbstractControl) {
-    if (control.get('signupPassword').value !== control.get('passwordConfirmation').value) {
-      return { 'mismatch': true };
-    }
+  passwordMatchValidator(control: FormGroup) {
+    const password = control.get('signupPassword');
+    const confirmPassword = control.get('passwordConfirmation');
+    return (password && confirmPassword &&  password.value !== confirmPassword.value) ? { mismatch: true } : null;
   }
 
   passwordValidator(expression: RegExp) {
