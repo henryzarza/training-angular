@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,7 +12,14 @@ import { PageNotFoundComponent } from './screens/page-not-found/page-not-found.c
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, PageNotFoundComponent],
-  imports: [BrowserModule, GeneralComponentsModule, ReactiveFormsModule, HomeModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    GeneralComponentsModule,
+    ReactiveFormsModule,
+    HomeModule,
+    AppRoutingModule
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

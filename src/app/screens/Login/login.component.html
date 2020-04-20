@@ -23,6 +23,9 @@
       class="error-message">
       {{errorMessages.getMessage(signupForm.errors)}}
     </span>
+    <span *ngIf="creationErrorMessage" class="error-message">
+      {{creationErrorMessage}}
+    </span>
     <button class="general-btn primary" type="submit" [disabled]="!signupForm.valid">
       Sign Up
     </button>
