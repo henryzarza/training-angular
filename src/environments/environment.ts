@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urlBase: 'https://wbooks-api-stage.herokuapp.com/api/v1'
+  urlBase: 'https://private-027725-angularbooks.apiary-mock.com'
 };
 
 /*

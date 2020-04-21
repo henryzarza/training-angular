@@ -10,6 +10,10 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   createUser(data) {
-    return this.http.post(`${environment.urlBase}/users`, data);
+    return this.http.post(`${environment.urlBase}/user`, data);
+  }
+
+  getUser() {
+    return this.http.get(`${environment.urlBase}/user`);
   }
 }

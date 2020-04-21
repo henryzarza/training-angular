@@ -37,7 +37,15 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (this.isLoginVisible) {
-      console.table(this.loginForm.value);
+      this._userService.getUser()
+        .subscribe(
+          data => {
+            console.log('success', data); // TODO save the data
+            localStorage.setItem('isAuthenticated', 'true');
+            this.router.navigate(['/']);
+          },
+          () => this.creationErrorMessage = 'Error with the server. Try later, please'
+        );
     } else {
       const signData = {
         email: this.signupForm.value.signupEmail,
@@ -47,11 +55,10 @@ export class LoginComponent implements OnInit {
         last_name: this.signupForm.value.lastName,
         locale: 'en'
       };
-      console.table(signData);
       this._userService.createUser(signData)
         .subscribe(
-          () => {
-            console.log('success');
+          data => {
+            console.log('success', data); // TODO save the data
             localStorage.setItem('isAuthenticated', 'true');
             this.router.navigate(['/']);
           },
@@ -64,6 +71,7 @@ export class LoginComponent implements OnInit {
     this.isLoginVisible = !this.isLoginVisible;
     this.loginForm.reset();
     this.signupForm.reset();
+    this.creationErrorMessage = null;
   }
 
   passwordMatchValidator(control: FormGroup) {
