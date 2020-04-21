@@ -18,6 +18,11 @@
     <app-input label="Email" id="signupEmail" formControlName="signupEmail"></app-input>
     <app-input label="Password" id="signupPassword" formControlName="signupPassword" type="password"></app-input>
     <app-input label="Password confirmation" id="passwordConfirmation" formControlName="passwordConfirmation" type="password"></app-input>
+    <span
+      *ngIf="signupForm.errors && (signupForm.get('passwordConfirmation').dirty || signupForm.get('passwordConfirmation').touched)"
+      class="error-message">
+      {{errorMessages.getMessage(signupForm.errors)}}
+    </span>
     <button class="general-btn primary" type="submit" [disabled]="!signupForm.valid">
       Sign Up
     </button>
