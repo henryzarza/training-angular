@@ -1,7 +1,7 @@
-<div class="card" style="background-image: url('/assets/books/book-1.jpg');" [routerLink]="['/book-detail', 1]">
-  <button class="button">get in</button>
+<div class="card" style="background-image: url({{book.image}});" [routerLink]="['/book-detail', book.id]">
+  <button type="button" class="button">get in</button>
   <div class="card-content">
-    <h3 class="card-title">The Grapes of Wrath</h3>
-    <h5 class="card-title-info">John Steinbeck</h5>
+    <h3 class="card-title">{{book.name}}</h3>
+    <h5 class="card-title-info">{{book.author}}</h5>
   </div>
 </div>
