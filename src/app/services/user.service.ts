@@ -16,4 +16,8 @@ export class UserService {
   getUser() {
     return this.http.get(`${environment.urlBase}/user`);
   }
+
+  getToken() {
+    return 'ww.xx.yy.zzz';
+  }
 }
