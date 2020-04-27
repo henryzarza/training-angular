@@ -10,9 +10,17 @@ import { BookListComponent } from './screens/book-list/book-list.component';
 import { GeneralComponentsModule } from 'src/app/components/general-components.module';
 import { BookService } from './book.service';
 import { TokenInterceptorService } from './token-interceptor.service';
+import { SearchBookPipe } from 'src/app/pipes/search-book.pipe';
 
 @NgModule({
-  declarations: [BookCardComponent, NavbarComponent, SearcherComponent, BookDetailComponent, BookListComponent],
+  declarations: [
+    BookCardComponent,
+    NavbarComponent,
+    SearcherComponent,
+    BookDetailComponent,
+    BookListComponent,
+    SearchBookPipe
+  ],
   imports: [CommonModule, HomeRoutingModule, GeneralComponentsModule],
   providers: [
     BookService,
