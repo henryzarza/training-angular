@@ -1,4 +1,4 @@
 <div class="container">
-  <input class="input" type="text" placeholder="Search by title..." />
+  <input class="input" type="text" placeholder="Search by title..." (input)="handleInputChange(input.value)" #input />
   <i class="icon fas fa-search"></i>
 </div>

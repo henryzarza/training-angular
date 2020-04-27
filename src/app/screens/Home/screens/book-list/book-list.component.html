@@ -1,9 +1,9 @@
 <app-navbar></app-navbar>
-<app-searcher></app-searcher>
+<app-searcher (changeInput)="changeSearcher($event)"></app-searcher>
 <app-loader *ngIf="isLoading; else content"></app-loader>
 <ng-template #content>
   <div class="container">
-    <ng-container *ngFor="let book of books">
+    <ng-container *ngFor="let book of books | searchBook:searcher">
       <app-book-card [book]="book"></app-book-card>
     </ng-container>
   </div>

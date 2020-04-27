@@ -10,6 +10,7 @@ import { BookInterface } from 'src/app/interfaces/book.interface';
 export class BookListComponent implements OnInit {
   books: BookInterface[];
   isLoading = true;
+  searcher: string;
 
   constructor(private bookService: BookService) {}
 
@@ -24,5 +25,9 @@ export class BookListComponent implements OnInit {
         console.warn(error);
       }
     );
+  }
+
+  changeSearcher(value: string) {
+    this.searcher = value;
   }
 }
