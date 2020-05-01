@@ -4,33 +4,32 @@
     Back
   </a>
   <div class="card">
-    <div class="cover-container">
-      <img class="cover" src="/assets/books/book-1.jpg" alt="The Grapes of Wrath" />
-    </div>
-    <div class="card-content">
-      <h2 class="card-title">
-        The Grapes of Wrath
-        <span class="card-subtitle">(Novel)</span>
-      </h2>
-      <div class="card-item">
-        <span class="card-item-title">Author:</span>
-        <span class="card-item-text">John Steinbeck</span>
+    <ng-container *ngIf="book; else noData">
+      <div class="cover-container">
+        <img class="cover" [src]="book.image" [alt]="book.name" />
       </div>
-      <div class="card-item">
-        <span class="card-item-title">Publisher:</span>
-        <span class="card-item-text">Viking Press</span>
+      <div class="card-content">
+        <h2 class="card-title">
+          {{book.name}}
+          <span class="card-subtitle">({{book.genre}})</span>
+        </h2>
+        <div class="card-item">
+          <span class="card-item-title">Author:</span>
+          <span class="card-item-text">{{book.author}}</span>
+        </div>
+        <div class="card-item">
+          <span class="card-item-title">Publisher:</span>
+          <span class="card-item-text">{{book.publisher}}</span>
+        </div>
+        <div class="card-item">
+          <span class="card-item-title">Publication date:</span>
+          <span class="card-item-text">{{book.year}}</span>
+        </div>
+        <p class="card-item-text">{{book.summary}}</p>
       </div>
-      <div class="card-item">
-        <span class="card-item-title">Publication date:</span>
-        <span class="card-item-text">April 14, 1939</span>
-      </div>
-      <p class="card-item-text">
-        Set during the Great Depression, the novel focuses on the Joads, a poor family of tenant farmers
-        driven from their Oklahoma home by drought, economic hardship, agricultural industry changes,
-        and bank foreclosures forcing tenant farmers out of work. Due to their nearly hopeless situation,
-        and in part because they are trapped in the Dust Bowl, the Joads set out for California along
-        with thousands of other "Okies" seeking jobs, land, dignity, and a future.
-      </p>
-    </div>
+    </ng-container>
+    <ng-template #noData>
+      Without data
+    </ng-template>
   </div>
 </div>
