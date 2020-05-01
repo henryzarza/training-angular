@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { BookService } from '../../book.service';
+import { AppState } from 'src/app/store/state/app.state';
+import { GetBooks } from 'src/app/store/actions/books.actions';
 import { BookInterface } from 'src/app/interfaces/book.interface';
-import { BookStateInterface, AppState } from 'src/app/app.state';
-import * as BookActions from 'src/app/store/actions/books.action';
 
 @Component({
   selector: 'app-book-list',
@@ -11,27 +10,20 @@ import * as BookActions from 'src/app/store/actions/books.action';
   styleUrls: ['./book-list.component.scss']
 })
 export class BookListComponent implements OnInit {
-  // books: Observable<BookStateInterface[]>;
-  isLoading = true;
+  books: BookInterface[];
   searcher: string;
+  isLoading = true;
 
-  constructor(private bookService: BookService, private store: Store<AppState>) {}
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
-    this.store.select('books').subscribe(books => {
-      console.log('store', books);
-    });
-    /* this.bookService.getBooks().subscribe(
-      (response: BookInterface[]) => {
+    this.store.select('books').subscribe(({ books }) => {
+      if (books) {
         this.isLoading = false;
-        this.store.dispatch(new BookActions.AddBooks(response));
-        // this.books = response;
-      },
-      (error) => {
-        this.isLoading = false;
-        console.warn(error);
+        this.books = books;
       }
-    ); */
+    });
+    this.store.dispatch(new GetBooks());
   }
 
   changeSearcher(value: string) {
