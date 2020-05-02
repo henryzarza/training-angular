@@ -1,0 +1,42 @@
+@import 'src/scss/variables';
+@import 'src/scss/colors';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+}
+
+.item {
+  align-items: center;
+  border-bottom: 0.1rem solid $mercury;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.item-title {
+  font-size: 1.2rem;
+  line-height: 1.1;
+  margin-right: 0.5rem;
+}
+
+.btn-item-delete {
+  font-size: 1.3rem;
+
+  &:hover > i,
+  &:focus > i,
+  &:active > i {
+    color: lighten($mandy, 15%);
+  }
+
+  & > i {
+    color: $mandy;
+    transition: color $transition-duration $transition-function;
+  }
+}

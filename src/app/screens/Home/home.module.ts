@@ -11,6 +11,7 @@ import { GeneralComponentsModule } from 'src/app/components/general-components.m
 import { BookService } from './book.service';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { SearchBookPipe } from 'src/app/pipes/search-book.pipe';
+import { ShoppingCartContentComponent } from './components/shopping-cart-content/shopping-cart-content.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SearchBookPipe } from 'src/app/pipes/search-book.pipe';
     SearcherComponent,
     BookDetailComponent,
     BookListComponent,
-    SearchBookPipe
+    SearchBookPipe,
+    ShoppingCartContentComponent
   ],
   imports: [CommonModule, HomeRoutingModule, GeneralComponentsModule],
   providers: [
