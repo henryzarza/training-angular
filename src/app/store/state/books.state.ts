@@ -7,5 +7,5 @@ export interface BookStateInterface {
 
 export const initialBookState = {
   books: null,
-  cart: null
+  cart: []
 };

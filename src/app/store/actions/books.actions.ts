@@ -4,7 +4,8 @@ import { BookInterface } from 'src/app/interfaces/book.interface';
 export enum EBooksActions {
   GET_BOOKS = '[Books] Get Books',
   ADD_BOOKS = '[Books] Add Books',
-  ADD_BOOK_TO_CART = '[Books] AddToCart',
+  ADD_TO_CART = '[Books] AddToCart',
+  SET_BOOKS_TO_CART = '[Books] SetBooksToCart',
   REMOVE_BOOK_FROM_CART = '[Books] Remove'
 }
 
@@ -19,7 +20,13 @@ export class AddBooks implements Action {
 }
 
 export class AddToCart implements Action {
-  readonly type = EBooksActions.ADD_BOOK_TO_CART;
+  readonly type = EBooksActions.ADD_TO_CART;
+
+  constructor(public payload: BookInterface) {}
+}
+
+export class SetBooksToCart implements Action {
+  readonly type = EBooksActions.SET_BOOKS_TO_CART;
 
   constructor(public payload: BookInterface[]) {}
 }
@@ -30,4 +37,4 @@ export class RemoveFromCart implements Action {
   constructor(public payload: number) {}
 }
 
-export type BookActions = GetBooks | AddBooks | AddToCart | RemoveFromCart;
+export type BookActions = GetBooks | AddBooks | AddToCart | SetBooksToCart | RemoveFromCart;
