@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Effect, ofType, Actions } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
-import { switchMap, catchError } from 'rxjs/operators';
+import { switchMap, catchError, map, withLatestFrom } from 'rxjs/operators';
 
 import { BookService } from 'src/app/screens/home/book.service';
-import { GetBooks, EBooksActions, AddBooks } from '../actions/books.actions';
+import { GetBooks, EBooksActions, AddBooks, AddToCart, SetBooksToCart, RemoveFromCart } from '../actions/books.actions';
 import { BookInterface } from 'src/app/interfaces/book.interface';
+import { AppState } from '../state/app.state';
 
 @Injectable()
 export class BooksEffects {
@@ -20,8 +22,29 @@ export class BooksEffects {
     })
   );
 
+  @Effect()
+  addToCart$ = this.actions$.pipe(
+    ofType<AddToCart>(EBooksActions.ADD_TO_CART),
+    map(action => action.payload),
+    withLatestFrom(this.store.pipe(map(state => state.books.cart))),
+    switchMap(([payload, cart]) => of(new SetBooksToCart(cart.find(el => el.id === payload.id) ? cart : [ ...cart, payload])))
+  );
+
+  @Effect()
+  RemoveFromCart$ = this.actions$.pipe(
+    ofType<RemoveFromCart>(EBooksActions.REMOVE_BOOK_FROM_CART),
+    map(action => action.payload),
+    withLatestFrom(this.store.pipe(map(state => state.books.cart))),
+    switchMap(([payload, cart]) => {
+      const index = cart.findIndex(el => el.id === payload);
+      const newCart = [...cart].splice(index, 1); // TODD fix this
+      return of(new SetBooksToCart(newCart));
+    })
+  );
+
   constructor(
     private bookService: BookService,
-    private actions$: Actions
+    private actions$: Actions,
+    private store: Store<AppState>
   ) {}
 }
