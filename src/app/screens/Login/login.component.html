@@ -7,6 +7,7 @@
       {{creationErrorMessage}}
     </span>
     <button class="general-btn primary" type="submit" [disabled]="!loginForm.valid">
+      <i *ngIf="isLoading" class="fas fa-spinner fa-pulse icon-loader"></i>
       Login
     </button>
     <span class="separator"></span>
@@ -30,6 +31,7 @@
       {{creationErrorMessage}}
     </span>
     <button class="general-btn primary" type="submit" [disabled]="!signupForm.valid">
+      <i *ngIf="isLoading" class="fas fa-spinner fa-pulse icon-loader"></i>
       Sign Up
     </button>
     <span class="separator"></span>

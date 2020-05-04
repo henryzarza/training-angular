@@ -16,8 +16,9 @@ export class LoginComponent implements OnInit {
   signupForm: FormGroup;
   errorMessages = Errors;
   creationErrorMessage: string;
+  isLoading: boolean;
 
-  constructor(private router: Router, private _userService: UserService) {}
+  constructor(private router: Router, private userService: UserService) {}
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -36,15 +37,19 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+    this.isLoading = true;
     if (this.isLoginVisible) {
-      this._userService.getUser()
+      this.userService.getUser()
         .subscribe(
           data => {
-            console.log('success', data); // TODO save the data
+            console.log('success', data);
             localStorage.setItem('isAuthenticated', 'true');
             this.router.navigate(['/']);
           },
-          () => this.creationErrorMessage = 'Error with the server. Try later, please'
+          () => {
+            this.creationErrorMessage = 'Error with the server. Try later, please';
+            this.isLoading = false;
+          }
         );
     } else {
       const signData = {
@@ -55,14 +60,17 @@ export class LoginComponent implements OnInit {
         last_name: this.signupForm.value.lastName,
         locale: 'en'
       };
-      this._userService.createUser(signData)
+      this.userService.createUser(signData)
         .subscribe(
           data => {
-            console.log('success', data); // TODO save the data
+            console.log('success', data);
             localStorage.setItem('isAuthenticated', 'true');
             this.router.navigate(['/']);
           },
-          () => this.creationErrorMessage = 'Error with the server. Try later, please'
+          () => {
+            this.creationErrorMessage = 'Error with the server. Try later, please';
+            this.isLoading = false;
+          }
         );
     }
   }
