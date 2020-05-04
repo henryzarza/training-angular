@@ -3,6 +3,9 @@
     <img class="logo" src="/assets/logo.png" alt="Angular training logo" />
     <app-input label="Email" formControlName="email" id="email"></app-input>
     <app-input label="Password" formControlName="password" id="password" type="password"></app-input>
+    <span *ngIf="creationErrorMessage" class="error-message">
+      {{creationErrorMessage}}
+    </span>
     <button class="general-btn primary" type="submit" [disabled]="!loginForm.valid">
       Login
     </button>
@@ -22,6 +25,9 @@
       *ngIf="signupForm.errors && (signupForm.get('passwordConfirmation').dirty || signupForm.get('passwordConfirmation').touched)"
       class="error-message">
       {{errorMessages.getMessage(signupForm.errors)}}
+    </span>
+    <span *ngIf="creationErrorMessage" class="error-message">
+      {{creationErrorMessage}}
     </span>
     <button class="general-btn primary" type="submit" [disabled]="!signupForm.valid">
       Sign Up

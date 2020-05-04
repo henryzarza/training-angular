@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/fo
 import { Router } from '@angular/router';
 import { EMAIL_PATTERN_VALIDATION, PASSWORD_PATTERN_VALIDATION } from 'src/constants/form-validations';
 import { Errors } from 'src/constants/error-messages';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -14,8 +15,9 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   signupForm: FormGroup;
   errorMessages = Errors;
+  creationErrorMessage: string;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private _userService: UserService) {}
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -25,7 +27,6 @@ export class LoginComponent implements OnInit {
     this.signupForm = new FormGroup({
       firstName: new FormControl('', [Validators.required, Validators.minLength(2)]),
       lastName: new FormControl('', [Validators.required, Validators.minLength(2)]),
-      locale: new FormControl('en'),
       signupEmail: new FormControl('', [Validators.required, Validators.pattern(EMAIL_PATTERN_VALIDATION)]),
       signupPassword: new FormControl('', [
         Validators.required, Validators.minLength(8), this.passwordValidator(PASSWORD_PATTERN_VALIDATION)
@@ -36,19 +37,41 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (this.isLoginVisible) {
-      console.table(this.loginForm.value);
+      this._userService.getUser()
+        .subscribe(
+          data => {
+            console.log('success', data); // TODO save the data
+            localStorage.setItem('isAuthenticated', 'true');
+            this.router.navigate(['/']);
+          },
+          () => this.creationErrorMessage = 'Error with the server. Try later, please'
+        );
     } else {
-      this.signupForm.get('locale').setValue('en');
-      console.table(this.signupForm.value);
+      const signData = {
+        email: this.signupForm.value.signupEmail,
+        password: this.signupForm.value.signupPassword,
+        password_confirmation: this.signupForm.value.passwordConfirmation,
+        first_name: this.signupForm.value.firstName,
+        last_name: this.signupForm.value.lastName,
+        locale: 'en'
+      };
+      this._userService.createUser(signData)
+        .subscribe(
+          data => {
+            console.log('success', data); // TODO save the data
+            localStorage.setItem('isAuthenticated', 'true');
+            this.router.navigate(['/']);
+          },
+          () => this.creationErrorMessage = 'Error with the server. Try later, please'
+        );
     }
-    localStorage.setItem('isAuthenticated', 'true');
-    this.router.navigate(['/']);
   }
 
   toggleContent() {
     this.isLoginVisible = !this.isLoginVisible;
     this.loginForm.reset();
     this.signupForm.reset();
+    this.creationErrorMessage = null;
   }
 
   passwordMatchValidator(control: FormGroup) {
