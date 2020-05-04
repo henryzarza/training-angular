@@ -37,7 +37,8 @@ export class BooksEffects {
     withLatestFrom(this.store.pipe(map(state => state.books.cart))),
     switchMap(([payload, cart]) => {
       const index = cart.findIndex(el => el.id === payload);
-      const newCart = [...cart].splice(index, 1); // TODD fix this
+      const newCart = [...cart];
+      newCart.splice(index, 1);
       return of(new SetBooksToCart(newCart));
     })
   );
