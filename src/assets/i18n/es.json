@@ -1,7 +1,29 @@
 {
-  "welcomeMessage": "Gracias por unirte, {{ firstName }}! Bienvenido!",
-  "login": {
-    "username": "Ingresar con el nombre de usario",
-    "password": "Contraseña aquí"
-  }
+  "HOME": {
+    "TITLE": "Gracias por unirte, {{ firstName }}! Bienvenido!",
+    "LOADER": "Cargando",
+    "BOOKS": {
+      "GET_IN": "agregar",
+      "SEARCHER": "Buscar por el título...",
+      "EMPTY_CART_MESSAGE": "Parece que tu carrito está vacío, agrega un libro ahora mismo!",
+      "EMPTY_CART_TITLE": "Tu carrito está vacío",
+      "SHOPPING_CART_TITLE": "Tu carrito",
+      "BACK": "Regresar",
+      "AUTHOR": "Autor:",
+      "PUBLISHER": "Editorial:",
+      "PUBLICATION": "Fecha de publicación:",
+      "NO_DATA": "Sin datos"
+    }
+  },
+  "LOGIN": {
+    "LOGOUT": "Salir",
+    "SIGN_UP": "Registrarse",
+    "NAME": "Nombre",
+    "EMAIL": "Correo",
+    "PASSWORD": "Contraseña",
+    "LAST_NAME": "Apellidos",
+    "REPEAT_PASSWORD": "Repetir contraseña"
+  },
+  "404_MESSAGE": "Oh, parece que estás perdido, pero no te preocupes",
+  "COMEBACK_HOME": "regresar a casa"
 }
