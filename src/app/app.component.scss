@@ -1,0 +1,19 @@
+@import 'src/scss/colors';
+@import 'src/scss/variables';
+
+.select-language {
+  background-color: $white;
+  border: 0.08rem solid rgba($black, 0.6);
+  bottom: 2rem;
+  color: $dove-gray;
+  font-size: 1rem;
+  line-height: 1.1;
+  padding: 0.3rem 0.5rem;
+  position: fixed;
+  right: 2rem;
+  transition: border-color $transition-duration $transition-function;
+
+  &:focus {
+    border-color: $azure;
+  }
+}
