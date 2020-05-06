@@ -1,8 +1,8 @@
 <div class="general-container">
   <form class="container" [formGroup]="loginForm" (ngSubmit)="onSubmit()" [ngClass]="{'hide-form': !isLoginVisible}">
     <img class="logo" src="/assets/logo.png" alt="Angular training logo" />
-    <app-input label="Email" formControlName="email" id="email"></app-input>
-    <app-input label="Password" formControlName="password" id="password" type="password"></app-input>
+    <app-input [label]="'LOGIN.EMAIL' | translate" formControlName="email" id="email"></app-input>
+    <app-input [label]="'LOGIN.PASSWORD' | translate" formControlName="password" id="password" type="password"></app-input>
     <span *ngIf="creationErrorMessage" class="error-message">
       {{creationErrorMessage}}
     </span>
@@ -12,16 +12,16 @@
     </button>
     <span class="separator"></span>
     <button class="general-btn secondary" type="button" (click)="toggleContent()">
-      Sign Up
+      {{ 'LOGIN.SIGN_UP' | translate }}
     </button>
   </form>
   <form class="container" [ngClass]="{'hide-form': isLoginVisible}" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
     <img class="logo" src="/assets/logo.png" alt="Angular training logo" />
-    <app-input label="Name" id="firstName" formControlName="firstName"></app-input>
-    <app-input label="Last name" id="lastName" formControlName="lastName"></app-input>
-    <app-input label="Email" id="signupEmail" formControlName="signupEmail"></app-input>
-    <app-input label="Password" id="signupPassword" formControlName="signupPassword" type="password"></app-input>
-    <app-input label="Password confirmation" id="passwordConfirmation" formControlName="passwordConfirmation" type="password"></app-input>
+    <app-input [label]="'LOGIN.NAME' | translate" id="firstName" formControlName="firstName"></app-input>
+    <app-input [label]="'LOGIN.LAST_NAME' | translate" id="lastName" formControlName="lastName"></app-input>
+    <app-input [label]="'LOGIN.EMAIL' | translate" id="signupEmail" formControlName="signupEmail"></app-input>
+    <app-input [label]="'LOGIN.PASSWORD' | translate" id="signupPassword" formControlName="signupPassword" type="password"></app-input>
+    <app-input [label]="'LOGIN.REPEAT_PASSWORD' | translate" id="passwordConfirmation" formControlName="passwordConfirmation" type="password"></app-input>
     <span
       *ngIf="signupForm.errors && (signupForm.get('passwordConfirmation').dirty || signupForm.get('passwordConfirmation').touched)"
       class="error-message">
@@ -32,7 +32,7 @@
     </span>
     <button class="general-btn primary" type="submit" [disabled]="!signupForm.valid">
       <i *ngIf="isLoading" class="fas fa-spinner fa-pulse icon-loader"></i>
-      Sign Up
+      {{ 'LOGIN.SIGN_UP' | translate }}
     </button>
     <span class="separator"></span>
     <button class="general-btn secondary" type="button" (click)="toggleContent()">
