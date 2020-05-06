@@ -5,10 +5,11 @@ import { FormsModule } from '@angular/forms';
 import { InputComponent } from './input/input.component';
 import { LoaderComponent } from './loader/loader.component';
 import { ModalComponent } from './modal/modal.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [InputComponent, LoaderComponent, ModalComponent],
   exports: [InputComponent, LoaderComponent, ModalComponent],
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslateModule],
 })
 export class GeneralComponentsModule {}
