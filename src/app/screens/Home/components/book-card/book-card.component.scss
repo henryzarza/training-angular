@@ -52,7 +52,7 @@
   flex-direction: column;
   padding: 0.8rem;
   position: absolute;
-  transform: translateY(10rem);
+  transform: translateY(20rem);
   transition: transform $transition-duration $transition-function;
   width: 100%;
 }
@@ -67,4 +67,5 @@
 .card-title-info {
   color: $white;
   font-size: 1rem;
+  line-height: 1.1;
 }

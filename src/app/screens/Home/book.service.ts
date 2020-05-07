@@ -5,19 +5,10 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
-
+export class BookService {
   constructor(private http: HttpClient) { }
 
-  createUser(data) {
-    return this.http.post(`${environment.urlBase}/user`, data);
-  }
-
-  getUser() {
-    return this.http.get(`${environment.urlBase}/user`);
-  }
-
-  getToken() {
-    return 'ww.xx.yy.zzz';
+  getBooks() {
+    return this.http.get(`${environment.urlBase}/books`);
   }
 }

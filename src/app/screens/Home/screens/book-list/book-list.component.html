@@ -1,7 +1,10 @@
 <app-navbar></app-navbar>
 <app-searcher></app-searcher>
-<div class="container">
-  <ng-container *ngFor="let item of ['', '', '', '', '', '', '', '']">
-    <app-book-card></app-book-card>
-  </ng-container>
-</div>
+<app-loader *ngIf="isLoading; else content"></app-loader>
+<ng-template #content>
+  <div class="container">
+    <ng-container *ngFor="let book of books">
+      <app-book-card [book]="book"></app-book-card>
+    </ng-container>
+  </div>
+</ng-template>

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { BookInterface } from 'src/app/interfaces/book.interface';
 
 @Component({
   selector: 'app-book-card',
@@ -6,4 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./book-card.component.scss']
 })
 export class BookCardComponent {
+  @Input() book: BookInterface;
 }
