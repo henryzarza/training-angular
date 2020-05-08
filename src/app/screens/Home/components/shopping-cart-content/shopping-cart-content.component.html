@@ -1,19 +1,19 @@
-<ul class="container">
-  <ng-container *ngIf="data.length; else emptyCart">
+<ul class="container" *ngIf="data.length; else emptyCart">
+  <!-- <ng-container> -->
     <li class="item" *ngFor="let book of data; index as i">
       <h6 class="item-title">{{book.name}} - {{book.author}}</h6>
       <button type="button" class="btn-item-delete" (click)="removeBookFromCart(i)">
         <i class="far fa-trash-alt"></i>
       </button>
     </li>
-  </ng-container>
-  <ng-template #emptyCart>
-    <div class="empty-container">
-      <img class="empty-image" src="/assets/empty-cart.png" alt="Empty cart">
-      <h6 class="empty-title">Your shopping cart is empty</h6>
-      <p class="empty-explanation">
-        It seems your shopping cart is empty, add you favorite book right now.
-      </p>
-    </div>
-  </ng-template>
+  <!-- </ng-container> -->
 </ul>
+<ng-template #emptyCart>
+  <div class="empty-container">
+    <img class="empty-image" src="/assets/empty-cart.png" alt="Empty cart">
+    <h6 class="empty-title">Your shopping cart is empty</h6>
+    <p class="empty-explanation">
+      It seems your shopping cart is empty, add you favorite book right now.
+    </p>
+  </div>
+</ng-template>
