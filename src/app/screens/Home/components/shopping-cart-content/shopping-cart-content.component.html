@@ -1,8 +1,8 @@
 <ul class="container">
   <ng-container *ngIf="data.length; else emptyCart">
-    <li class="item" *ngFor="let book of data">
+    <li class="item" *ngFor="let book of data; index as i">
       <h6 class="item-title">{{book.name}} - {{book.author}}</h6>
-      <button type="button" class="btn-item-delete" (click)="removeBookToCart(book.id)">
+      <button type="button" class="btn-item-delete" (click)="removeBookFromCart(i)">
         <i class="far fa-trash-alt"></i>
       </button>
     </li>

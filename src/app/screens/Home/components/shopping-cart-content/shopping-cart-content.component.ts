@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { BookInterface } from 'src/app/interfaces/book.interface';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { BookInterface } from 'src/app/interfaces/book.interface';
 import { AppState } from 'src/app/store/state/app.state';
 import { RemoveFromCart } from 'src/app/store/actions/books.actions';
 
@@ -20,7 +20,7 @@ export class ShoppingCartContentComponent implements OnInit {
     });
   }
 
-  removeBookToCart(id: number) {
-    this.store.dispatch(new RemoveFromCart(id));
+  removeBookFromCart(index: number) {
+    this.store.dispatch(new RemoveFromCart(index));
   }
 }
