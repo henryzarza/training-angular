@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BookService } from '../../book.service';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/store/state/app.state';
+import { GetBooks } from 'src/app/store/actions/books.actions';
 import { BookInterface } from 'src/app/interfaces/book.interface';
 
 @Component({
@@ -9,22 +11,19 @@ import { BookInterface } from 'src/app/interfaces/book.interface';
 })
 export class BookListComponent implements OnInit {
   books: BookInterface[];
-  isLoading = true;
   searcher: string;
+  isLoading = true;
 
-  constructor(private bookService: BookService) {}
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
-    this.bookService.getBooks().subscribe(
-      (response: BookInterface[]) => {
+    this.store.select('books').subscribe(({ books }) => {
+      if (books) {
         this.isLoading = false;
-        this.books = response;
-      },
-      (error) => {
-        this.isLoading = false;
-        console.warn(error);
+        this.books = books;
       }
-    );
+    });
+    this.store.dispatch(new GetBooks());
   }
 
   changeSearcher(value: string) {
