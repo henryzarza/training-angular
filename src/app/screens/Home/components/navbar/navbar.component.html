@@ -6,10 +6,15 @@
         <i class="fas fa-shopping-cart"></i>
         <span *ngIf="quantity" class="badge">{{quantity}}</span>
       </button>
-      <button type="button" class="btn-logout" (click)="logout()">Logout</button>
+      <button type="button" class="btn-logout" (click)="logout()">
+        {{ 'LOGIN.LOGOUT' | translate }}
+      </button>
     </div>
   </div>
 </nav>
-<app-modal headerTitle="Your shopoping car" [isOpen]="isModalOpen" (toggleModal)="toggleModal()">
+<app-modal
+  [headerTitle]="'HOME.BOOKS.SHOPPING_CART_TITLE' | translate"
+  [isOpen]="isModalOpen"
+  (toggleModal)="toggleModal()">
   <app-shopping-cart-content></app-shopping-cart-content>
 </app-modal>

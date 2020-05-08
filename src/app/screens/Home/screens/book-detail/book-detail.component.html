@@ -1,7 +1,7 @@
 <div class="container">
   <a routerLink="/" class="link">
     <i class="fas fa-long-arrow-alt-left"></i>
-    Back
+    {{ 'HOME.BOOKS.BACK' | translate }}
   </a>
   <div class="card">
     <ng-container *ngIf="book; else noData">
@@ -14,22 +14,22 @@
           <span class="card-subtitle">({{book.genre}})</span>
         </h2>
         <div class="card-item">
-          <span class="card-item-title">Author:</span>
+          <span class="card-item-title">{{ 'HOME.BOOKS.AUTHOR' | translate }}</span>
           <span class="card-item-text">{{book.author}}</span>
         </div>
         <div class="card-item">
-          <span class="card-item-title">Publisher:</span>
+          <span class="card-item-title">{{ 'HOME.BOOKS.PUBLISHER' | translate }}</span>
           <span class="card-item-text">{{book.publisher}}</span>
         </div>
         <div class="card-item">
-          <span class="card-item-title">Publication date:</span>
+          <span class="card-item-title">{{ 'HOME.BOOKS.PUBLICATION' | translate }}</span>
           <span class="card-item-text">{{book.year}}</span>
         </div>
         <p class="card-item-text">{{book.summary}}</p>
       </div>
     </ng-container>
     <ng-template #noData>
-      Without data
+      {{ 'HOME.BOOKS.NO_DATA' | translate }}
     </ng-template>
   </div>
 </div>

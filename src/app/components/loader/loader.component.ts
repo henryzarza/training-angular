@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   template: `
     <div class="container">
       <div class="spinner"></div>
-      <h3 class="text">Loading</h3>
+      <h3 class="text">{{ 'HOME.LOADER' | translate }}</h3>
     </div>
   `,
   styleUrls: ['./loader.component.scss']

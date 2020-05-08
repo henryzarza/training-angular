@@ -9,9 +9,11 @@
 <ng-template #emptyCart>
   <div class="empty-container">
     <img class="empty-image" src="/assets/empty-cart.png" alt="Empty cart">
-    <h6 class="empty-title">Your shopping cart is empty</h6>
+    <h6 class="empty-title">
+      {{ 'HOME.BOOKS.EMPTY_CART_TITLE' | translate }}
+    </h6>
     <p class="empty-explanation">
-      It seems your shopping cart is empty, add you favorite book right now.
+      {{ 'HOME.BOOKS.EMPTY_CART_MESSAGE' | translate }}
     </p>
   </div>
 </ng-template>

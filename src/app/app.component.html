@@ -1,0 +1,8 @@
+<router-outlet></router-outlet>
+<select class="select-language" #langSelect (change)="translate.use(langSelect.value)">
+  <option *ngFor="let lang of translate.getLangs()"
+    [value]="lang"
+    [selected]="lang === translate.currentLang">
+    {{ lang | uppercase}}
+  </option>
+</select>

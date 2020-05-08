@@ -12,6 +12,7 @@ import { BookService } from './book.service';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { SearchBookPipe } from 'src/app/pipes/search-book.pipe';
 import { ShoppingCartContentComponent } from './components/shopping-cart-content/shopping-cart-content.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { ShoppingCartContentComponent } from './components/shopping-cart-content
     SearchBookPipe,
     ShoppingCartContentComponent
   ],
-  imports: [CommonModule, HomeRoutingModule, GeneralComponentsModule],
+  imports: [CommonModule, HomeRoutingModule, GeneralComponentsModule, TranslateModule],
   providers: [
     BookService,
     {

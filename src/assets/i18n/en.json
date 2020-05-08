@@ -1,0 +1,29 @@
+{
+  "HOME": {
+    "TITLE": "Thanks for joining, {{ firstName }}! It's great to have you!",
+    "LOADER": "Loading",
+    "BOOKS": {
+      "GET_IN": "get in",
+      "SEARCHER": "Search by title...",
+      "EMPTY_CART_MESSAGE": "It seems your shopping cart is empty, add you favorite book right now.",
+      "EMPTY_CART_TITLE": "Your shopping cart is empty",
+      "SHOPPING_CART_TITLE": "Your shopping car",
+      "BACK": "Back",
+      "AUTHOR": "Author:",
+      "PUBLISHER": "Publisher:",
+      "PUBLICATION": "Publication date:",
+      "NO_DATA": "Without data"
+    }
+  },
+  "LOGIN": {
+    "LOGOUT": "Logout",
+    "SIGN_UP": "Sign up",
+    "NAME": "Name",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "LAST_NAME": "Last Name",
+    "REPEAT_PASSWORD": "Password confirmation"
+  },
+  "404_MESSAGE": "Ohh, It seems that you're lost, but don't worry",
+  "COMEBACK_HOME": "come back home"
+}
