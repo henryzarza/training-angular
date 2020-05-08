@@ -1,7 +1,7 @@
 <ul class="container">
   <li class="item" *ngFor="let book of data">
     <h6 class="item-title">{{book.name}} - {{book.author}}</h6>
-    <button type="button" class="btn-item-delete" (click)="removeBookToCart(book.id)">
+    <button type="button" class="btn-item-delete" (click)="removeBookFromCart(book.id)">
       <i class="far fa-trash-alt"></i>
     </button>
   </li>
