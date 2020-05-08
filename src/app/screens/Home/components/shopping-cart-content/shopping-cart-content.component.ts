@@ -20,7 +20,7 @@ export class ShoppingCartContentComponent implements OnInit {
     });
   }
 
-  removeBookFromCart(id: number) {
-    this.store.dispatch(new RemoveFromCart(id));
+  removeBookFromCart(index: number) {
+    this.store.dispatch(new RemoveFromCart(index));
   }
 }
