@@ -4,10 +4,11 @@ import { FormsModule } from '@angular/forms';
 
 import { InputComponent } from './input/input.component';
 import { LoaderComponent } from './loader/loader.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
-  declarations: [InputComponent, LoaderComponent],
-  exports: [InputComponent, LoaderComponent],
+  declarations: [InputComponent, LoaderComponent, ModalComponent],
+  exports: [InputComponent, LoaderComponent, ModalComponent],
   imports: [CommonModule, FormsModule],
 })
 export class GeneralComponentsModule {}

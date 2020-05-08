@@ -2,7 +2,7 @@
   <div class="content">
     <img class="logo" src="/assets/logo.png" alt="Angular training logo" />
     <div class="button-container">
-      <button type="button" class="btn-shopping">
+      <button type="button" class="btn-shopping" (click)="toggleModal()">
         <i class="fas fa-shopping-cart"></i>
         <span class="badge">3</span>
       </button>
@@ -10,3 +10,6 @@
     </div>
   </div>
 </nav>
+<app-modal headerTitle="Your shopoping car" [isOpen]="isModalOpen" (toggleModal)="toggleModal()">
+  <app-shopping-cart-content></app-shopping-cart-content>
+</app-modal>
