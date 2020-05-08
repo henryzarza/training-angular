@@ -5,7 +5,7 @@ export const bookReducer = (state = initialBookState, action: BookActions): Book
   switch (action.type) {
     case EBooksActions.ADD_BOOKS:
       return { ...state, books: action.payload };
-    case EBooksActions.ADD_BOOK_TO_CART:
+    case EBooksActions.SET_BOOKS_TO_CART:
       return { ...state, cart: action.payload };
     default:
       return state;

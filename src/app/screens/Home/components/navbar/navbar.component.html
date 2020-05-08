@@ -4,7 +4,7 @@
     <div class="button-container">
       <button type="button" class="btn-shopping" (click)="toggleModal()">
         <i class="fas fa-shopping-cart"></i>
-        <span class="badge">3</span>
+        <span *ngIf="quantity" class="badge">{{quantity}}</span>
       </button>
       <button type="button" class="btn-logout" (click)="logout()">Logout</button>
     </div>
